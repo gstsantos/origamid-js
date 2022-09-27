@@ -38,8 +38,13 @@ body {
 }
 
 .grid-section {
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: 90px 300px 1fr;
+  margin-bottom: 64px;
+  padding: 10px;
+  gap: 20px;
+  grid-column: 2/4;
 }
 
 /* classes reutilizaveis */
@@ -79,11 +84,7 @@ body {
 /* ANIMAIS */
 
 .animais {
-  grid-column: 2/4;
-  padding: 10px;
   width: 100%;
-  gap: 20px;
-  margin-bottom: 64px;
 }
 
 .galeria-animais {
@@ -183,12 +184,6 @@ body {
 
 /* FAQ */
 
-.faq {
-  grid-column: 2/4;
-  gap: 20px;
-  margin-bottom: 64px;
-}
-
 .faq dl {
   grid-column: 2/4;
 }
@@ -213,11 +208,13 @@ body {
 
 .faq dt::after {
   content: "⯆";
+  display: inline-block;
   margin-left: 10px;
+  transition: .3s;
 }
 
 .faq dt.ativo::after {
-  content: "⯅";
+  transform: rotate(180deg);
 }
 
 .faq dd {
@@ -245,13 +242,6 @@ body {
 }
 
 /* CONTATO */
-
-.contato {
-  grid-column: 2/4;
-  gap: 20px;
-  padding: 10px;
-  margin-bottom: 64px;
-}
 
 .mapa-contato {
   grid-column: 2;
@@ -291,16 +281,11 @@ body {
     grid-template-columns: 1fr;
   }
 
+  .header,
+  .footer,
   .grid-section {
     grid-template-columns: 100px 1fr;
-  }
-
-  .header,
-  .animais,
-  .faq,
-  .contato,
-  .footer {
-    grid-column: 1;
+    grid-column: 1/-1;
   }
 
   .faq dl,
@@ -308,7 +293,6 @@ body {
   .contato-info {
     grid-column: 1/3;
   }
-
 
   .header {
     margin-top: 0px;

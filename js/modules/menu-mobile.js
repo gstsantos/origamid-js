@@ -4,27 +4,21 @@ export default function initMenuMobile() {
   const menuButton = document.querySelector("[data-menu='button']");
   const menuList = document.querySelector("[data-menu='list']");
   const eventos = ["click","touchstart"];
+  const ativo = "active";
 
   if (menuButton) {
     function openMenu(event) {
-      if (event.type === "touchstart") {
-        menuList.classList.add("active")
-        menuButton.classList.add("active")
-        event.preventDefault()
-      } else {
-        menuList.classList.add("active")
-        menuButton.classList.add("active")
-        event.preventDefault()
-      }
+      menuList.classList.add(ativo)
+      menuButton.classList.add(ativo)
+      event.preventDefault()
       
       outsideClick(menuList,eventos,() => {
-        menuList.classList.remove("active")
-        menuButton.classList.remove("active")
+        menuList.classList.remove(ativo)
+        menuButton.classList.remove(ativo)
       })
     }
     eventos.forEach((evento) =>{
       menuButton.addEventListener(evento,openMenu);
     })
   }
-  
 }
