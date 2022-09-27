@@ -322,6 +322,21 @@ body {
   opacity: 1;
   transform: translate3d(0px,0,0);
   transition: .3s;
- 
 }
 
+/* Horario Aberto/Fechado js */
+
+[data-semana]::after {
+  content: "";
+  display: inline-block;
+  margin-left: 4px;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background-color: #e54;
+  border: 2px solid black;
+}
+
+[data-semana].aberto::after {
+  background-color: rgb(28, 185, 28);
+}
