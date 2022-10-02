@@ -6,8 +6,9 @@ import initModal from "./modules/modal.js";
 import initToolTip from "./modules/tooltip.js";
 import initDropDownMenu from "./modules/dropdown-menu.js";
 import initMenuMobile from "./modules/menu-mobile.js";
-import initAnimaNumeros from "./modules/anima-numeros.js";
 import initFuncionamento from "./modules/funcionamento.js";
+import iniFetchAnimais from "./modules/fetch-animais.js";
+import initFetchBitcoin from "./modules/fetch-bitcoin.js"
 
 initSmoothScroll();
 initAnimationScroll();
@@ -17,8 +18,9 @@ initModal();
 initToolTip();
 initDropDownMenu();
 initMenuMobile();
-initAnimaNumeros();
 initFuncionamento();
+iniFetchAnimais();
+initFetchBitcoin();
 
 
 
