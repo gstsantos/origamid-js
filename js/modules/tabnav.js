@@ -1,24 +1,32 @@
-export default function initTabNav() {
-  const fotoAnimais = Array.from(document.querySelectorAll("[data-tab='menu'] li"));
-  const textoAnimais = Array.from(document.querySelectorAll("[data-tab='content'] section"));
-
-  function clickAnimal(index) {
-    const classe = textoAnimais[index].dataset.anime;
-
-    textoAnimais.forEach((texto) => {
-      texto.classList.remove('ativo');
-    });
-
-    textoAnimais[index].classList.add('ativo', classe);
+export default class TabNav {
+  constructor(menu, content) {
+    this.tabMenu = Array.from(document.querySelectorAll(menu));
+    this.tabContent = Array.from(document.querySelectorAll(content));
+    this.activeClass = 'ativo';
   }
 
-  if (fotoAnimais.length && textoAnimais.length) {
-    textoAnimais[0].classList.add('ativo');
-
-    fotoAnimais.forEach((foto, index) => {
-      foto.addEventListener('click', () => {
-        clickAnimal(index);
-      });
+  // ativa o content de acordo com o item clicado
+  activeTab(index) {
+    this.tabContent.forEach((content) => {
+      content.classList.remove(this.activeClass);
     });
+
+    const classe = this.tabContent[index].dataset.anime;
+    this.tabContent[index].classList.add(this.activeClass, classe);
+  }
+
+  // Adiciona os eventos nas tabs
+  addTabNavEvent() {
+    this.tabMenu.forEach((itemMenu, index) => {
+      itemMenu.addEventListener('click', () => this.activeTab(index));
+    });
+  }
+
+  init() {
+    if (this.tabMenu.length && this.tabContent.length) {
+      // ativar o primeiro item
+      this.activeTab(0);
+      this.addTabNavEvent();
+    }
   }
 }
