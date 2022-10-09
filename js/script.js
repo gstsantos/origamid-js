@@ -6,7 +6,7 @@ import Tooltip from './modules/tooltip.js';
 import initDropDownMenu from './modules/dropdown-menu.js';
 import initMenuMobile from './modules/menu-mobile.js';
 import initFuncionamento from './modules/funcionamento.js';
-import iniFetchAnimais from './modules/fetch-animais.js';
+import fetchAnimais from './modules/fetch-animais.js';
 import initFetchBitcoin from './modules/fetch-bitcoin.js';
 import initAnimationScroll from './modules/scroll-animacao.js';
 
@@ -33,6 +33,7 @@ tooltip.init();
 initDropDownMenu();
 initMenuMobile();
 initFuncionamento();
-iniFetchAnimais();
+// parâmetros = url da api, e o alvo onde será adicionado os items da api
+fetchAnimais('../../animaisapi.json', '.numeros-grid');
 initFetchBitcoin();
 initAnimationScroll();
