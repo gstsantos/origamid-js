@@ -1,9 +1,8 @@
-export default function initFetchBitcoin() {
-  const spanBtc = document.querySelector('.btc-valor');
-
+export default function fetchBitcoin(url, target) {
   async function refreshBtc() {
     try {
-      const btcResponse = await fetch('https://blockchain.info/ticker');
+      const spanBtc = document.querySelector(target);
+      const btcResponse = await fetch(url);
       const btcValor = await btcResponse.json();
       spanBtc.innerText = `R$: ${(100 / btcValor.BRL.buy).toFixed(4)}`;
     } catch (erro) {
