@@ -7,7 +7,7 @@ import initDropDownMenu from './modules/dropdown-menu.js';
 import initMenuMobile from './modules/menu-mobile.js';
 import initFuncionamento from './modules/funcionamento.js';
 import fetchAnimais from './modules/fetch-animais.js';
-import initFetchBitcoin from './modules/fetch-bitcoin.js';
+import fetchBitcoin from './modules/fetch-bitcoin.js';
 import initAnimationScroll from './modules/scroll-animacao.js';
 
 // links internos, options
@@ -35,5 +35,7 @@ initMenuMobile();
 initFuncionamento();
 // parâmetros = url da api, e o alvo onde será adicionado os items da api
 fetchAnimais('../../animaisapi.json', '.numeros-grid');
-initFetchBitcoin();
+
+// parâmetros = url da api de bitcoin e o target onde o valor será colocado
+fetchBitcoin('https://blockchain.info/ticker', '.btc-valor');
 initAnimationScroll();
