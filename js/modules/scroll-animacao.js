@@ -1,23 +1,33 @@
-export default function initAnimationScroll() {
-  const sections = document.querySelectorAll("[data-anime='scroll']");
-  function animationScroll() {
-    const windowSize = window.innerHeight * 0.6;
+export default class AnimationScroll {
+  constructor(content, activeClass) {
+    this.contents = document.querySelectorAll(content);
+    this.animationScroll = this.animationScroll.bind(this);
+    this.activeClass = activeClass;
+  }
 
-    sections.forEach((section) => {
-      const sectionTop = section.getBoundingClientRect().top;
-      const reachElement = (sectionTop - windowSize) < 0;
+  animationScroll() {
+    const windowSize = window.innerHeight * 0.6;
+    this.contents.forEach((content) => {
+      const contentTop = content.getBoundingClientRect().top;
+      const reachElement = (contentTop - windowSize) < 0;
       if (reachElement) {
-        section.classList.add('ativo');
-      } else if (section.classList.contains('ativo')) {
-        section.classList.remove('ativo');
+        content.classList.add(this.activeClass);
+      } else if (content.classList.contains(this.activeClass)) {
+        content.classList.remove(this.activeClass);
       }
     });
   }
 
-  if (sections.length) {
-    animationScroll(); // para ativar a função e checar o top do elemento;
-    // e dar a classe para a primeira section
+  addAnimationScrollEvent() {
+    window.addEventListener('scroll', this.animationScroll);
+  }
 
-    window.addEventListener('scroll', animationScroll);
+  init() {
+    if (this.contents.length) {
+      // para ativar a função e checar o top do elemento;
+      // e dar a classe para o primeiro conteudo
+      this.animationScroll();
+      this.addAnimationScrollEvent();
+    }
   }
 }
