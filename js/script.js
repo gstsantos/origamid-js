@@ -8,7 +8,7 @@ import initMenuMobile from './modules/menu-mobile.js';
 import initFuncionamento from './modules/funcionamento.js';
 import fetchAnimais from './modules/fetch-animais.js';
 import fetchBitcoin from './modules/fetch-bitcoin.js';
-import initAnimationScroll from './modules/scroll-animacao.js';
+import AnimationScroll from './modules/scroll-animacao.js';
 
 // argumentos = links internos, options
 const scrollSuave = new ScrollSuave("[data-menu='suave'] a[href^='#']");
@@ -38,4 +38,7 @@ fetchAnimais('../../animaisapi.json', '.numeros-grid');
 
 // argumentos = url da api de bitcoin e o target onde o valor será colocado
 fetchBitcoin('https://blockchain.info/ticker', '.btc-valor');
-initAnimationScroll();
+
+// argumentos = conteudos que serão animados ao scroll e a classe que será ativada
+const animationScroll = new AnimationScroll("[data-anime='scroll']", 'ativo');
+animationScroll.init();

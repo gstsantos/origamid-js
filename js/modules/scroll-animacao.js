@@ -1,23 +1,54 @@
-export default function initAnimationScroll() {
-  const sections = document.querySelectorAll("[data-anime='scroll']");
-  function animationScroll() {
-    const windowSize = window.innerHeight * 0.6;
+export default class AnimationScroll {
+  constructor(content, activeClass) {
+    this.contents = document.querySelectorAll(content);
+    this.activeClass = activeClass;
+    this.windowMetade = window.innerHeight * 0.6;
+    this.checkDistance = this.checkDistance.bind(this);
+  }
 
-    sections.forEach((section) => {
-      const sectionTop = section.getBoundingClientRect().top;
-      const reachElement = (sectionTop - windowSize) < 0;
-      if (reachElement) {
-        section.classList.add('ativo');
-      } else if (section.classList.contains('ativo')) {
-        section.classList.remove('ativo');
+  // pega a distancia de cada conteudo e cria um objeto
+  getDistance() {
+    // [...this.contents] transforma em array para usar o map
+    // map consegue retornar uma array, nesse caso de objetos
+    this.contentInfo = [...this.contents].map((content) => {
+      const { offsetTop } = content;
+      return {
+        content,
+        offsetTop: Math.floor(offsetTop - this.windowMetade),
+      };
+    });
+  }
+
+  // verifica a distancia do topo de cada objeto
+  // com o scroll realizado
+  checkDistance() {
+    this.contentInfo.forEach((contentInfo) => {
+      if (contentInfo.offsetTop < window.scrollY) {
+        contentInfo.content.classList.add(this.activeClass);
+      } else if (contentInfo.content.classList.contains(this.activeClass)) {
+        contentInfo.content.classList.remove(this.activeClass);
       }
     });
   }
 
-  if (sections.length) {
-    animationScroll(); // para ativar a função e checar o top do elemento;
-    // e dar a classe para a primeira section
+  // adicionar o evento de scroll
+  addAnimationScrollEvent() {
+    window.addEventListener('scroll', this.checkDistance);
+  }
 
-    window.addEventListener('scroll', animationScroll);
+  init() {
+    if (this.contents.length) {
+      // para ativar a função e checar o top do elemento;
+      // e dar a classe para o primeiro conteudo
+      this.getDistance();
+      this.checkDistance();
+      this.addAnimationScrollEvent();
+    }
+    return this;
+  }
+
+  // remover o evento de scroll
+  stop() {
+    window.removeEventListener('scroll', this.checkDistance);
   }
 }
