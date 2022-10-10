@@ -18,7 +18,7 @@ export default function fetchAnimais(url, target) {
 
   // animar números de cada animal
   function animaNumeroAnimais() {
-    // parâmetros = numeros a serem animados, observer Target e a classe que o observer Target
+    // argumentos = numeros a serem animados, observer Target e a classe que o observer Target
     // irá observar em caso de mutação
     const animaNumeros = new AnimaNumeros('[data-numero]', '.numeros', 'ativo');
     animaNumeros.init();
