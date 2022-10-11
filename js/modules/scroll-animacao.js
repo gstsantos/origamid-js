@@ -1,9 +1,11 @@
+import debounce from './debounce.js';
+
 export default class AnimationScroll {
   constructor(content, activeClass) {
     this.contents = document.querySelectorAll(content);
     this.activeClass = activeClass;
     this.windowMetade = window.innerHeight * 0.6;
-    this.checkDistance = this.checkDistance.bind(this);
+    this.checkDistance = debounce(this.checkDistance.bind(this), 50);
   }
 
   // pega a distancia de cada conteudo e cria um objeto
