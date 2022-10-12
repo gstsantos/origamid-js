@@ -43,7 +43,7 @@ const funcionamento = new Funcionamento('[data-semana]', 'aberto');
 funcionamento.init();
 
 // argumentos = url da api, e o alvo onde será adicionado os items da api
-fetchAnimais('../../animaisapi.json', '.numeros-grid');
+fetchAnimais('./animaisapi.json', '.numeros-grid');
 
 // argumentos = url da api de bitcoin e o target onde o valor será colocado
 fetchBitcoin('https://blockchain.info/ticker', '.btc-valor');
