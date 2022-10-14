@@ -46,13 +46,10 @@
   border: 4px solid white;
   border-radius: 50%;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .3);
-  background: #e54;
+  background: #e54 url('../img/fechar.svg') center center no-repeat;
   top: -30px;
   right: -30px;
   position: absolute;
-  font-size: 1.92rem;
-  color: white;
-  font-family: "IBM Plex Mono",monospace;
   cursor: pointer;
 }
 
@@ -67,6 +64,8 @@
   width: 100%;
   padding: 11.2px 8px;
   box-sizing: border-box;
+  border: 2px solid #222;
+  border-radius: 0px;
 }
 
 .modal button[type="submit"] {

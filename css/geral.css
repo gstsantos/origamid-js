@@ -207,14 +207,18 @@ body {
 }
 
 .faq dt::after {
-  content: "⯆";
+  content: '';
+  width: 10px;
+  height: 10px;
   display: inline-block;
+  background: url('../img/arrow-red.svg') no-repeat center center;
   margin-left: 10px;
-  transition: .3s;
+  transform: rotate(90deg);
+  transition: transform .3s;
 }
 
 .faq dt.ativo::after {
-  transform: rotate(180deg);
+  transform: rotate(-90deg);
 }
 
 .faq dd {
@@ -347,3 +351,11 @@ body {
 [data-semana].aberto::after {
   background-color: rgb(28, 185, 28);
 }
+
+.arrow-black {
+  background: url(../img/arrow-black.svg) no-repeat center center;
+  display: inline-block;
+  width: 8px;
+  height: 10px;
+}
+
