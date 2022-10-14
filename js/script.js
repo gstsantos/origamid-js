@@ -9,6 +9,7 @@ import Funcionamento from './modules/funcionamento.js';
 import fetchAnimais from './modules/fetch-animais.js';
 import fetchBitcoin from './modules/fetch-bitcoin.js';
 import AnimationScroll from './modules/scroll-animacao.js';
+import SlideNav from './modules/slide.js';
 
 // argumentos = links internos, options
 const scrollSuave = new ScrollSuave("[data-menu='suave'] a[href^='#']");
@@ -51,3 +52,7 @@ fetchBitcoin('https://blockchain.info/ticker', '.btc-valor');
 // argumentos = conteudos que serão animados ao scroll e a classe que será ativada
 const animationScroll = new AnimationScroll("[data-anime='scroll']", 'ativo');
 animationScroll.init();
+
+const slide = new SlideNav('.slide', '.slide-wrapper');
+slide.init();
+slide.addControl('.custom-controls');
